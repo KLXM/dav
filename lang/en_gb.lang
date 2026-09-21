@@ -1,0 +1,80 @@
+dav_title = DAV
+dav_connect = Connect devices
+dav_settings = Settings
+dav_docs = Help
+perm_general_dav[] = DAV: connect devices and apps
+
+# Connect devices
+dav_no_https = This website does not use HTTPS. DAV sends the app password with every request. Without HTTPS that is unsafe, and Apple devices refuse to connect.
+dav_no_providers = No addon offering content via DAV is installed yet, for example <strong>scheduler</strong> for calendars.
+dav_nothing_available = Nothing has been shared with your user yet, for example a calendar. Please contact an administrator.
+dav_missing_perm = Your role lacks the permission “DAV: connect devices and apps”. Please contact an administrator.
+dav_offers_title = What you can reach
+dav_offers_intro = This content appears directly in your app once connected.
+dav_offer = Offer
+dav_protocol = Protocol
+dav_offer_items = Available to you
+dav_offer_nothing = nothing shared
+
+# Three-step assistant
+dav_step = Step {0} of {1}
+dav_step1_title = Name the device
+dav_step1_intro = You create a separate app password for every app and device. You never type your REDAXO password into a calendar or contacts app. If a device gets lost, you revoke only its password.
+dav_label = What is the password for?
+dav_label_placeholder = e.g. “iPhone” or “Thunderbird at the office”
+dav_label_help = Your choice. It helps you revoke the right password later.
+dav_label_default = My device
+dav_scope = What may the app do?
+dav_scope_read = Read only
+dav_scope_read_help = The app shows your content but cannot change anything.
+dav_scope_readwrite = Read and write
+dav_scope_readwrite_help = The app may create, change and delete, as far as your permissions allow.
+dav_create = Create app password
+dav_step2_title = Copy the password
+dav_step2_intro = This is your app password for “{0}”. It is shown <strong>only now</strong>. Copy it straight into your app. If you lose it, simply create a new one.
+dav_copy = Copy
+dav_copied = Copied
+dav_step3_title = Enter it in the app
+dav_step3_intro = Add a new account in your app and enter these three values:
+dav_server = Server
+dav_username = User name
+dav_password = Password
+dav_password_hint = the app password above, not your REDAXO password
+dav_done = Done
+dav_howto_apple = iPhone, iPad and Mac
+dav_howto_apple_caldav = Settings › Calendar › Accounts › Add Account › Other › Add CalDAV Account. On the Mac: Calendar › Add Account › Other CalDAV Account, account type “Manual” or “Advanced”.
+dav_howto_apple_carddav = Settings › Contacts › Accounts › Add Account › Other › Add CardDAV Account.
+dav_howto_apple_webdav = In Finder: Go › Connect to Server and enter the server address.
+dav_howto_thunderbird = Thunderbird
+dav_howto_thunderbird_caldav = Calendar › New Calendar › On the Network. Enter user name and server address, then pick the calendars found.
+dav_howto_thunderbird_carddav = Address Book › New Address Book › Add CardDAV Address Book.
+dav_howto_thunderbird_webdav = Thunderbird cannot mount files via WebDAV.
+dav_howto_android = Android
+dav_howto_android_all = Install the free app DAVx⁵, choose “Login with URL and user name” and enter the three values. Calendars and contacts then appear in your usual apps.
+dav_howto_outlook = Outlook on Windows
+dav_howto_outlook_all = Outlook does not speak DAV by itself. Install the free add-in “CalDav Synchronizer” and create a new profile with the three values.
+
+# Own passwords
+dav_tokens_title = My app passwords
+dav_tokens_empty = No app password yet.
+dav_token_label = Label
+dav_token_scope = Access
+dav_token_created = Created
+dav_token_last_used = Last used
+dav_token_never = never
+dav_revoke = revoke
+dav_revoke_confirm = Really revoke this app password? The device loses access immediately.
+dav_revoked = The app password has been revoked. Devices using it lose access.
+
+# Settings
+dav_settings_server = Server
+dav_settings_path = Path
+dav_settings_path_help = The server is then available at {0}. No existing article should use the same path.
+dav_settings_path_invalid = The path may only contain letters, digits, hyphens and underscores.
+dav_settings_browser = Diagnostics
+dav_settings_browser_label = Show an overview in the browser
+dav_settings_browser_help = Shows signed-in users a navigation view at the server address. Always on in REDAXO debug mode.
+dav_settings_saved = The settings have been saved. Devices already set up need the new address if the path changed.
+dav_settings_providers = Registered offers
+dav_settings_providers_empty = No addon offers content via DAV yet.
+dav_save = Save

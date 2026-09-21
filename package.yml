@@ -1,0 +1,32 @@
+package: dav
+version: '1.0.0-dev'
+author: 'KLXM Crossmedia GmbH'
+supportpage: https://github.com/KLXM/dav/issues
+
+requires:
+    redaxo: ^5.18.0
+    php:
+        version: '>=8.4'
+        extensions: [json, mbstring, xml]
+
+default_config:
+    path: dav
+    browser: false
+
+page:
+    title: 'translate:dav_title'
+    perm: 'dav[]'
+    icon: rex-icon fa-arrows-rotate
+    block: system
+    subpages:
+        connect:
+            title: 'translate:dav_connect'
+            icon: rex-icon fa-mobile-screen
+        settings:
+            title: 'translate:dav_settings'
+            icon: rex-icon fa-gear
+            perm: admin
+        docs:
+            title: 'translate:dav_docs'
+            icon: rex-icon fa-book
+            itemClass: pull-right
