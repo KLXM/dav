@@ -6,8 +6,36 @@ use KLXM\Dav\Dav;
 use KLXM\Dav\Server;
 use KLXM\Dav\TokenService;
 
-// sabre/* bringt Funktionsdateien mit, die nur der Composer-Autoloader lädt.
-require_once __DIR__ . '/vendor/autoload.php';
+// sabre/* bringt Funktionsdateien mit (Sabre\Uri\resolve() u. a.), die nur der Composer-Autoloader
+// laedt - die Klassen allein wuerde rex_autoload aus vendor/ auch selbst finden.
+//
+// Wichtig: den Autoloader NUR mit den Laufzeit-Abhaengigkeiten laden. Sind die Dev-Abhaengigkeiten
+// installiert (composer install ohne --no-dev, wie bei der Entwicklung am Addon), wuerde hier sonst
+// auch PHPUnit registriert - bei jedem REDAXO-Request. Laeuft dann in einem anderen Addon eine
+// Testsuite mit abweichender PHPUnit-Major-Version, gewinnt die hier registrierte und die Suite
+// bricht mit "Subscriber does not implement any known interface" ab.
+//
+// Die Funktionsdateien liegen in autoload_files.php und kommen ohne die Dev-Klassen aus, deshalb
+// werden sie gezielt eingebunden statt den kompletten Autoloader zu ziehen.
+(static function (): void {
+    $vendor = __DIR__ . '/vendor';
+
+    $files = $vendor . '/composer/autoload_files.php';
+    if (!is_file($files) || !is_dir($vendor . '/sabre')) {
+        // Abweichende Installation: dann doch der volle Autoloader.
+        if (is_file($vendor . '/autoload.php')) {
+            require_once $vendor . '/autoload.php';
+        }
+        return;
+    }
+
+    // Nur die Funktionsdateien der Laufzeit-Pakete; Dev-Pakete bleiben aussen vor.
+    foreach (require $files as $file) {
+        if (is_string($file) && is_file($file) && str_contains($file, '/sabre/')) {
+            require_once $file;
+        }
+    }
+})();
 
 if (rex::isBackend()) {
     rex_perm::register(Dav::PERM);
